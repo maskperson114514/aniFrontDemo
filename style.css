@@ -52,7 +52,7 @@ body {
     right: 0;
     z-index: 10;
     transition: transform 0.3s ease-out;
-    background-color: #ff3b30A0; /* Keep background color consistent */
+    background-color: #ff3b30CC; /* Keep background color consistent */
     
     border-radius: 0px 0px 8px 8px;
     backdrop-filter: blur(3px); /* 高斯模糊效果 */
@@ -225,7 +225,7 @@ body {
 
 /* 页码导航样式 */
 .pagination {
-    background-color: #ff3b30A0; /* 半透明背景 */
+    background-color: #ff3b30CC; /* 半透明背景 */
     padding: 10px;
     border-radius: 8px 8px 0px 0px;
     display: flex;
