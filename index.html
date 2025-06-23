@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动漫前端</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部功能区 -->
+        <div class="header-area">
+            <!-- 搜索栏 -->
+            <div class="search-bar">
+                <input type="text" placeholder="搜索内容...">
+                <button class="clear-btn"><i class="fas fa-times"></i></button>
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <!-- 胶囊栏 -->
+            <div class="capsule-bar">
+                <div class="capsule">分类 <span class="arrow-down">▼</span></div>
+                <div class="capsule">排序 <span class="arrow-down">▼</span></div>
+                <div class="capsule">筛选 <span class="arrow-down">▼</span></div>
+                <div class="capsule">更多 <span class="arrow-down">▼</span></div>
+                
+            </div>
+        </div>
+
+        <!-- 可滚动内容区域 -->
+        <div class="scrollable-content">
+
+            <!-- 内容网格 -->
+            <div class="content-grid">
+                <!-- 示例格子项 -->
+                <div class="grid-item">
+                    <img src="https://fpoimg.com/268x394" alt="内容图片">
+                    <div class="item-overlay"></div>
+                    <div class="item-title">
+                        <h4>标题一</h4>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://fpoimg.com/268x394" alt="内容图片">
+                    <div class="item-overlay"></div>
+                    <div class="item-title">
+                        <h4>标题二阿三大苏打实打实大苏打大苏打似的</h4>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://fpoimg.com/268x394" alt="内容图片">
+                    <div class="item-overlay"></div>
+                    <div class="item-title">
+                        <h4>标题三</h4>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://fpoimg.com/268x394" alt="内容图片">
+                    <div class="item-overlay"></div>
+                    <div class="item-title">
+                        <h4>标题四</h4>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://fpoimg.com/268x394" alt="内容图片">
+                    <div class="item-overlay"></div>
+                    <div class="item-title">
+                        <h4>标题五</h4>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://fpoimg.com/268x394" alt="内容图片">
+                    <div class="item-overlay"></div>
+                    <div class="item-title">
+                        <h4>标题六</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页码导航 -->
+        <div class="pagination">
+            <button class="page-link prev-link">&lt;</button>
+            <button class="page-link active">1</button>
+            <button class="page-link">2</button>
+            <button class="page-link">3</button>
+            <button class="page-link">4</button>
+            <span class="page-ellipsis">...</span>
+            <button class="page-link">67</button>
+            <button class="page-link next-link">&gt;</button>
+        </div>
+    </div>
+    <!-- 弹出卡片（初始隐藏，通过JS控制显示） -->
+    <div class="popup-card">
+        <h3>筛选选项</h3>
+        <p>这里可以放置各种筛选条件，例如：</p>
+        <ul>
+            <li>类型：动漫、电影、电视剧</li>
+            <li>地区：日本、欧美、国产</li>
+            <li>年份：2023、2022、更早</li>
+            <li>状态：连载中、已完结</li>
+        </ul>
+        <button>应用筛选</button>
+        <button>重置</button>
+    </div>
+    <div class="overlay"></div>
+    <script src="script.js"></script>
+</body>
+</html> 

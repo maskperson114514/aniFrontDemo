@@ -1,0 +1,271 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #333;
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Make the container take full height */
+}
+
+/* 顶部功能区 */
+.header-area {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    transition: transform 0.3s ease-out;
+    background-color: #ff3b30A0; /* Keep background color consistent */
+    
+    border-radius: 0px 0px 8px 8px;
+    backdrop-filter: blur(10px); /* 高斯模糊效果 */
+    -webkit-backdrop-filter: blur(10px); /* Safari兼容性 */
+}
+
+.header-area.hidden {
+    transform: translateY(-100%);
+}
+
+/* 搜索栏样式 */
+.search-bar {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 8px 0px 0px 8px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    /* 提示字符颜色 */
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.7); /* 设置为稍浅的白色，以便与输入文本区分 */
+    }
+
+    /* 关闭聚焦边框 */
+    &:focus {
+        outline: none;
+    }
+}
+
+.search-bar button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.search-bar .search-btn {
+    border-radius: 0px 8px 8px 0px;
+}
+
+/* 胶囊栏样式 */
+.capsule-bar {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.capsule {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.capsule .arrow-down {
+    font-size: 12px;
+}
+
+.popup-card {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 66.67vh;
+    background-color: #fff;
+    color: #333;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+    z-index: 999;
+}
+
+.popup-card.show {
+    transform: translateY(0);
+}
+
+/* 可滚动内容区域 */
+.scrollable-content {
+    padding-top: 130px; /* Adjust based on header height */
+    padding-bottom: 70px;
+    flex-grow: 1; /* Allow it to take up remaining space */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add gap between capsule bar and content grid */
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+/* 内容网格样式 */
+.content-grid {
+    --grid-gap: 5px; /* 定义网格间距变量 */
+    padding: 5px; /* 减小内边距 */
+    border-radius: 8px;
+    display: grid;
+    /* 横向最小为3，最大不限：结合固定最小宽度和动态计算，确保至少3列并允许更多 */
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, calc( (100% - (2 * var(--grid-gap))) / 3 )), 1fr));
+    gap: var(--grid-gap); /* 使用变量定义的间距 */
+    justify-items: center;
+}
+
+.grid-item {
+    color: #333;
+    border-radius: 8px;
+    text-align: center;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    position: relative; /* 允许子元素绝对定位 */
+    overflow: hidden; /* 隐藏超出部分 */
+}
+
+.grid-item img {
+    width: 100%; /* 图片宽度填充父容器 */
+    height: auto; /* 高度自适应 */
+    display: block; /* 移除图片底部空白 */
+    /* border-radius: 4px; */
+}
+
+.item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* 蒙版高度 */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+
+}
+
+.item-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #fff; /* 标题颜色 */
+    text-align: left; /* 标题左对齐 */
+    z-index: 1; /* 确保标题在蒙版之上 */
+}
+
+.item-title h4 {
+    margin: 0;
+    font-size: 16px;
+    display: -webkit-box; /* 使文本可以按行截断 */
+    -webkit-line-clamp: 2; /* 限制为两行 */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* 隐藏超出部分 */
+    text-overflow: ellipsis; /* 显示省略号 */
+}
+
+/* 页码导航样式 */
+.pagination {
+    background-color: #ff3b30A0; /* 半透明背景 */
+    padding: 10px;
+    border-radius: 8px 8px 0px 0px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    position: fixed; /* 悬浮 */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    backdrop-filter: blur(10px); /* 高斯模糊效果 */
+    -webkit-backdrop-filter: blur(10px); /* Safari兼容性 */
+    width: 100%; /* 确保宽度占满 */
+    box-sizing: border-box; /* 包含padding在内的宽度 */
+}
+
+.pagination .page-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    background-color: transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.pagination .page-link.active {
+    background-color: #ff3b30;
+    border-color: #ff3b30;
+}
+
+.pagination .page-link:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.pagination .page-ellipsis {
+    color: #fff;
+    font-size: 16px;
+    padding: 0 5px;
+}
+
+.pagination.hidden {
+    transform: translateY(100%);
+}
+
+/* 遮罩层样式 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
+    z-index: 998; /* 确保在弹出卡片下方但在其他内容上方 */
+    display: none; /* 初始隐藏 */
+}
