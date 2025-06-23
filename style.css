@@ -55,8 +55,8 @@ body {
     background-color: #ff3b30A0; /* Keep background color consistent */
     
     border-radius: 0px 0px 8px 8px;
-    backdrop-filter: blur(10px); /* 高斯模糊效果 */
-    -webkit-backdrop-filter: blur(10px); /* Safari兼容性 */
+    backdrop-filter: blur(3px); /* 高斯模糊效果 */
+    -webkit-backdrop-filter: blur(3px); /* Safari兼容性 */
 }
 
 .header-area.hidden {
@@ -238,8 +238,8 @@ body {
     right: 0;
     z-index: 2;
     transition: transform 0.3s ease-out;
-    backdrop-filter: blur(10px); /* 高斯模糊效果 */
-    -webkit-backdrop-filter: blur(10px); /* Safari兼容性 */
+    backdrop-filter: blur(3px); /* 高斯模糊效果 */
+    -webkit-backdrop-filter: blur(3px); /* Safari兼容性 */
     width: 100%; /* 确保宽度占满 */
     box-sizing: border-box; /* 包含padding在内的宽度 */
 }
